@@ -1,0 +1,40 @@
+7.2 
+
+在Express中路由如何工作
+ app.get("/about",function(req,res){
+res.send("Hello from the about route!");
+});
+注：此实例要在index.js中添加，然后重启服务器，输入网址
+localhost:3000/about即可访问；
+
+7.3
+
+Post方式工作：
+与get的过程是一样的，但要使用POST动词而不是GET动词。
+app.post("/",function(){
+res.send(req.body);
+});
+实例；
+index.jade
+form(method="post",action= "/")
+   fieldset
+    legend Add a user
+     p.clearfix
+     label First name
+     input(name= "user[first_name]")
+    p.clearfix
+     label Last name
+     input(name= "user[surname]")
+    p.actions
+     input(type= "submit", value= "Save")
+index.js
+router.post("/", function(req, res) {
+	res.send(req.body);
+});
+
+
+
+
+
+
+
