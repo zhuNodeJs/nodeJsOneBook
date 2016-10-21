@@ -3,3 +3,15 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  h2 Form example
+  form(method="post",action= "/")
+   fieldset
+    legend Add a user
+     p.clearfix
+     label First name
+     input(name= "user[first_name]")
+    p.clearfix
+     label Last name
+     input(name= "user[surname]")
+    p.actions
+     input(type= "submit", value= "Save")
