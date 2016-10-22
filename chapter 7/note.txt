@@ -1,4 +1,4 @@
-7.2 
+﻿7.2 
 
 在Express中路由如何工作
  app.get("/about",function(req,res){
@@ -31,6 +31,27 @@ index.js
 router.post("/", function(req, res) {
 	res.send(req.body);
 });
+
+7.5 
+
+在路由中使用参数
+实例：
+在users.js中添加：
+app.get("/users/:id", function(req,res){
+	res.send("show content for user id:"+req.params.id);
+});
+
+7.7-7.8
+视图的渲染实例：
+
+
+
+
+
+
+
+
+
 
 
 
