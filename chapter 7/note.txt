@@ -43,6 +43,34 @@ app.get("/users/:id", function(req,res){
 
 7.7-7.8
 视图的渲染实例：
+index.js
+router.get('/renderUse',function(req,res) {
+	// you would probably get this data from a data store
+	var user = {
+		first_name: "Lord",
+		surname: "Lucan",
+		address: "I'm not telling",
+		facebook_friends: "1356200"
+	};
+	// Note how the user object is passed as local variable to the view
+	res.render("chapterCanShu.jade",{title:"User",user:user});	
+});
+chapterCanShu.jade 
+extends layout
+
+
+block content
+  h1= title
+  p Welcome to #{title}
+  h1 Passing data through to the view layer
+  h3 First name
+  p= user.first_name
+  h3 Surname
+  p= user.surname
+  h3 Address
+  p= user.address
+  h3 Facebook Friends
+  p= user.facebook_friends
 
 
 
