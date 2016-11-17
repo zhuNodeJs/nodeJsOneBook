@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ajax的实例</title>
+  </head>
+  <body>
+      <input type="button" id='btn' value="单击获取ajax值">
+      <ul id="ul1"></ul>
+      <script src="json.js" charset="utf-8"></script>
+      <script src="ajax.js" charset="utf-8"></script>
+      <script type="text/javascript">
+        window.onload = function () {
+           var oBtn = document.getElementById('btn');
+           oBtn.onclick = function() {
+             ajax('get','getNews.php','username=朱顺利&age=60',function(data) {
+                var data = JSON.parse(data);
+                var html='';
+                for(var i=0;i<data.length;i++) {
+                  html+='<li><a href="">'+data[i].title+'</a>[<span>'+data[i].date+'</span>]</li>'
+                }
+                var oUl = document.getElementById('ul1');
+                oUl.innerHTML = html;
+             });
+             var time = setInterval(function() {
+               ajax('get','getNews.php','username=朱顺利&age=60',function(data) {
+                  var data = JSON.parse(data);
+                  var html='';
+                  for(var i=0;i<data.length;i++) {
+                    html+='<li><a href="">'+data[i].title+'</a>[<span>'+data[i].date+'</span>]</li>'
+                  }
+                  var oUl = document.getElementById('ul1');
+                  oUl.innerHTML = html;
+               });
+             },1500);
+           }
+        }
+      </script>
+  </body>
+</html>
