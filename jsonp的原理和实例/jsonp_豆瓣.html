@@ -51,7 +51,6 @@
           pageHtml += '<li class="pageStyle">'+i+'</li>';
         }
         pageNum.innerHTML = pageHtml;
-        console.log("li",$('li')[page])
         $($('li')[page]).addClass('addStyle');
       }
     }
@@ -80,7 +79,6 @@
             var target = e.target || e.srcElement;
             if((typeof Number(target.innerHTML)).toString().toLowerCase() === 'number') {
               var pageCount = Number(target.innerHTML);
-              deleteStyle();
               getPerPage(pageCount,10,searchStr);
             }
           });
