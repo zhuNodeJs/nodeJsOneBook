@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>百度的搜索框的实例</title>
+    <style media="screen">
+      #q {
+        width:300px;height:30px;border:1px solid #b6b6b6;
+        font-size: 16px;
+      }
+      #ul {
+        width:300px;border: 1px solid #b6b6b6;
+        padding:0px;margin:0px;list-style-type: none;
+        display: none;
+      }
+      #ul li {
+        display: block;margin: 0px;
+      }
+      #ul li a{
+        display: block;text-decoration:none;
+      }
+      #ul li a:hover {
+        background:pink;color:white;display: block;margin:0;padding: 0;
+      }
+    </style>
+    <script type="text/javascript">
+    function search(data) {
+      var oUl = document.getElementById('ul');
+        if(data.s.length) {
+          oUl.style.display= 'block';
+          var html='';
+          for (var i = 0; i < data.s.length; i++) {
+            html += '<li><a href="http://www.baidu.com/s?wd='+data.s[i]+'">'+data.s[i]+'</a></li>';
+          };
+          oUl.innerHTML = html;
+        }else {
+          oUl.style.display='none';
+        }
+    }
+      window.onload = function () {
+          var oInput = document.getElementById('q');
+          var oUl = document.getElementById('ul');
+          oInput.onkeyup = function() {
+            if( this.value != '') {
+              var oScript = document.createElement('script');
+              oScript.src='http://suggestion.baidu.com/su?wd='+this.value+'&cb=search';
+              document.body.appendChild(oScript);
+            }else {
+              oUl.style.display='none';
+            }
+
+          }
+      }
+    </script>
+  </head>
+  <body>
+    <input type="text" name="name" id="q" autocomplete="off">
+    <ul id="ul">
+    </ul>
+  </body>
+</html>
