@@ -1,0 +1,14 @@
+{
+  "name": "exam",
+  "version": "1.0.0",
+  "description": "this is a programme for the ping-pong double response in node",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "socket.io": "^0.8.7"
+  }
+}
