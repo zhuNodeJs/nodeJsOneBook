@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Socket.IO Express Example</title>
+    <style media="screen">
+      #send-message {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Socket.IO Express Example</h1>
+    <form action="#" id="set-nickname" autocomplete="off">
+        <label for="nickname">NickName:</label>
+        <input type="text" id='nickname'>
+        <input type="submit" value="提交">
+    </form>
+    <form id="send-message" autocomplete="off">
+      <textarea  rows="8" cols="80" id='message'></textarea>
+      <input type="submit" value="提交信息">
+    </form>
+    <ul id="nicknames">
+    </ul>
+    <section id="messages">
+    </section>
+    <script src="/socket.io/socket.io.js" charset="utf-8"></script>
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.js" charset="utf-8"></script>
+    <script type="text/javascript">
+      var socket = io.connect('http://127.0.0.1:3000');
+      socket.on('welcome', function(data) {
+        console.log(data.text);
+      });
+      var nickname = $('#nickname');
+      $('#set-nickname').submit(function(event) {
+        event.preventDefault();
+        socket.emit('nickname', nickname.val(), function(data) {
+          if(data) {
+            console.log('Nickname set Succcessfully!');
+            $('#set-nickname').hide();
+            $('#send-message').show();
+          } else {
+            $('#set-nickname').prepend('<p>Sorry, that nickname is already exits!</p>');
+          }
+        });
+      });
+      socket.on('nicknames', function(data) {
+        var html = '';
+        for(var i=0;i<data.length;i++) {
+          html += '<li>' + data[i] + '</li>';
+        }
+        $('#nicknames').empty().append(html);
+      });
+      // 单击“提交信息”按钮，发送给所有的客户端
+      $('#send-message').submit(function(event) {
+        event.preventDefault();
+        socket.emit('user message', $('#message').val());
+        $('#message').val('').focus();
+      });
+      socket.on('user message', function(data) {
+        $('#messages').append('<p><strong>'+data.nick+':</strong>'+data.message+'</p>');
+      });
+    </script>
+  </body>
+</html>

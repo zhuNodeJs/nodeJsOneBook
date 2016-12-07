@@ -1,0 +1,15 @@
+{
+  "name": "exam",
+  "version": "1.0.0",
+  "description": "这是node.js聊天室的第�一个程序",
+  "main": "app.js",
+  "scripts": {
+    "test": "node app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "3.3.4",
+    "socket.io":"0.9.16"
+  }
+}
