@@ -1,0 +1,12 @@
+{
+  "name": "ohaithere",
+  "version": "1.0.0",
+  "description": "this is the 22th zhang",
+  "main": "./lib/ohaithere.js",
+  "bin": "./bin/ohaithere.js",
+  "scripts": {
+    "test": "node ./test/ohaithere.js"
+  },
+  "author": "zhushunli",
+  "license": "ISC"
+}
