@@ -1,0 +1,17 @@
+{
+  "name": "backbone",
+  "version": "1.0.0",
+  "description": "this is the node with backbone.js",
+  "main": "app.js",
+  "private": "true",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "zhushunli",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^2.5.8",
+    "jade": "^0.22.0",
+    "mongojs": "^0.4.3"
+  }
+}
