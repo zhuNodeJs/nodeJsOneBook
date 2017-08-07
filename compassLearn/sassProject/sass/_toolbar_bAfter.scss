@@ -1,0 +1,137 @@
+@charset "utf-8";
+
+@import 'compass/css3';
+
+$default-box-sizing: border-box;
+$toolbar_wh: 52px;
+
+.toolbar {
+    @include display-flex;
+    @include flex-direction(column);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    @include translate(-50%, -50%);
+    .toolbar-item {
+        display: block;
+        width: $toolbar_wh;
+        height: $toolbar_wh;
+        margin-bottom: 1px;
+        position: relative;
+        &.toolbar-item-weixin {
+            .toolbar-btn:before {
+                @extend .icon-weixin;
+            }
+            .toolbar-btn:after {
+                content: "公众\A账号";
+            }
+            &:after {
+                content:"";
+                position: absolute;
+                width: 161px;
+                height: 201px;
+                right: $toolbar_wh;
+                bottom:0px;
+                @include background(image-url('toolbar_img.png'));
+                background-repeat: no-repeat;
+                background-position: 11px -2px;
+                @include opacity(0);
+                @include scale_toolbar(0.01);
+                @include transition_toolbar(opacity 1s ease, transform 1s ease);
+                @include transform-origin_toolbar(right bottom);
+            }
+        }
+        &.toolbar-item-feedback {
+            .toolbar-btn:before {
+                @extend .icon-yijianfankui;
+            }
+            .toolbar-btn:after {
+                content: "意见\A反馈";
+            }
+        }
+        &.toolbar-item-app {
+            .toolbar-btn:before {
+                @extend .icon-APPxiazai;
+            }
+            .toolbar-btn:after {
+                content: "APP\A下载";
+            }
+            &:after {
+                content: '';
+                position: absolute;
+                width: 161px;
+                height: 181px;
+                right: $toolbar_wh;
+                bottom: 0px;
+                @include background(image-url('toolbar_img.png'));
+                background-repeat: no-repeat;
+                background-position: 8px -228px;
+                @include opacity(0);
+                @include scale_toolbar(0.01);
+                @include transition_toolbar(opacity 1s ease, transform 1s ease);
+                @include transform-origin_toolbar(right bottom);
+            }
+        }
+        &.toolbar-item-top {
+            .toolbar-btn:before {
+                @extend .icon-fanhuidingbu;
+            }
+            .toolbar-btn:after {
+                content:"返回\A顶部";
+            }
+        }
+        &:hover {
+            &.toolbar-item-weixin:after, &.toolbar-item-app:after {
+                @include opacity(1);
+                @include scale_toolbar(1);
+            }
+            .toolbar-btn {
+                &:before {
+                    top: -$toolbar_wh;
+                }
+                &:after {
+                    top: 0px;
+                }
+            }
+        }
+        .toolbar-btn {
+            width: $toolbar_wh;
+            height: $toolbar_wh;
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            overflow: hidden;            
+            &:before {
+                content: "";
+                width: $toolbar_wh;
+                height: $toolbar_wh;        
+                @extend .iconfont;
+                position: absolute;
+                left: 0px;
+                top:0px;
+                background: #CDD0D3;
+                color:white;
+                text-align: center;
+                line-height: $toolbar_wh;
+                font-size: 26px !important;
+                @include transition_toolbar(top 1s ease, '');
+            }
+            &:after {
+                content: "";
+                width: $toolbar_wh;
+                height: $toolbar_wh;
+                position: absolute;
+                left: 0;
+                top:$toolbar_wh;
+                background: #A7AAAA;
+                color: white;
+                font-size: 11px;
+                white-space: pre;
+                text-align: center;
+                line-height: 1.2;
+                padding-top: 12px;
+                @include transition_toolbar(top 1s ease, '');
+            }
+        }
+    }
+}

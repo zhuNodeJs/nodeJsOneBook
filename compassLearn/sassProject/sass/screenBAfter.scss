@@ -1,0 +1,32 @@
+@charset "utf-8";
+
+@import 'normalize-version';
+@import 'normalize/html5','normalize/base','normalize/links','normalize/embeds';
+@import 'mixin';
+@import 'toolbar_bAfter';
+
+
+@font-face {font-family: "iconfont";
+  src: url('./fontIcon/iconfont.eot?t=1501574364652'); /* IE9*/
+  src: url('./fontIcon/iconfont.eot?t=1501574364652#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('./fontIcon/iconfont.woff?t=1501574364652') format('woff'), /* chrome, firefox */
+  url('./fontIcon/iconfont.ttf?t=1501574364652') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
+  url('./fontIcon/iconfont.svg?t=1501574364652#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family:"iconfont" !important;
+  font-size:16px;
+  font-style:normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-weixin:before { content: "\e600"; }
+
+.icon-yijianfankui:before { content: "\e756"; }
+
+.icon-fanhuidingbu:before { content: "\e5bb"; }
+
+.icon-APPxiazai:before { content: "\e610"; }
+
